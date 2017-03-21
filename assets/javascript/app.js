@@ -1,4 +1,4 @@
-var topics = ["cars", "landmarks", "poets", "museums", "monuments", "flowers", "seasons"];
+var topics = ["cars", "landmarks", "poets", "museums", "monuments", "flowers", "seasons", "nba", "boat", "dolphin"];
 
 
 function createButtons() {
@@ -11,7 +11,6 @@ function createButtons() {
 	}
 
 }
-
 
 createButtons();
 
@@ -37,17 +36,27 @@ $("button").on("click", function(){
 
             var topicsImage = $("<img>");
             topicsImage.attr("src", results[i].images.fixed_height.url);
+
+            var topicsImageStill = $("<img>");
+            topicsImageStill.attr("src", results[i].images.fixed_height_still.url);
             imagesDiv.append(p);
             imagesDiv.append(topicsImage);
 
             $("#sunsets-view").append(imagesDiv);
-          }
-        });
+          
+             $("img").on("click", function() {
+                $(this).attr("src", results[i].images.fixed_width_still.url);
 
+             })
+
+
+        };
+
+       
     });
 
-$("#sunsets-view").on("click", function () {
-	$("img").stop();
+// $("#sunsets-view").on("click", function () {
+// 	$("img").stop();
 	// var state = $(this).attr("data-state");
 	// // var animate = $(".gif").attr("data-animate");
  //      if (state === "still") {
