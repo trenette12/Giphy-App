@@ -1,6 +1,7 @@
-var topics = ["cars", "landmarks", "poets", "museums", "monuments", "flowers", "seasons"];
-
 //This createButtons function add the buttons and text inside the button//
+
+var topics = ["cars", "landmarks", "poets", "museums", "monuments", "flowers", "seasons", "nba", "boat", "dolphin"];
+
 function createButtons() {
 	$("#sunsets-view").empty();
 	for (var i = 0; i < topics.length; i++) {
@@ -14,7 +15,9 @@ function createButtons() {
 
 createButtons();
 
+
 //When a user clicks on a button, a call is made to the Giphy API to do a query search based on the text that's within the button. The search results will be added to the Images DIV//
+
 $("button").on("click", function(){
 	var topicChoice = $(this).attr("data-name");
 	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
@@ -36,6 +39,7 @@ $("button").on("click", function(){
 
             var topicsImage = $("<img>");
             topicsImage.attr("src", results[i].images.fixed_height.url);
+
             imagesDiv.append(p);
             imagesDiv.append(topicsImage);
 
@@ -55,6 +59,38 @@ $("img").on("click", function () {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
       }
+
+
+            var topicsImageStill = $("<img>");
+            topicsImageStill.attr("src", results[i].images.fixed_height_still.url);
+            imagesDiv.append(p);
+            imagesDiv.append(topicsImage);
+
+            $("#sunsets-view").append(imagesDiv);
+          
+             $("img").on("click", function() {
+                $(this).attr("src", results[i].images.fixed_width_still.url);
+
+             })
+
+
+        };
+
+       
+    });
+
+// $("#sunsets-view").on("click", function () {
+// 	$("img").stop();
+	// var state = $(this).attr("data-state");
+	// // var animate = $(".gif").attr("data-animate");
+ //      if (state === "still") {
+ //        $(this).attr("src", $(this).attr("data-animate"));
+ //        $(this).attr("data-state", "animate");
+ //      } else {
+ //        $(this).attr("src", $(this).attr("data-still"));
+ //        $(this).attr("data-state", "still");
+ //      }
+
 
 });
 
