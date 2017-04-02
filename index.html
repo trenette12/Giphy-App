@@ -44,9 +44,12 @@ $("button").on("click", function() {
 
 database.ref().on('value', function emotionSignature(snapshot){
   var localMovies = snapshot.val().Movies;
+  var corsURL = "https://movme-92cb7.firebaseio.com/cors";
+  var corsRequest = createCORSRequest('GET', corsURL);
+  corsRequest.send();
   for(var property in localMovies) {
   console.log(localMovies[property].Description);
-  
+
    $.post(
     queryURL,
     JSON.stringify({
