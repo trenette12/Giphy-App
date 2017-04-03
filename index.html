@@ -44,14 +44,13 @@ $("button").on("click", function() {
 
 database.ref().on('value', function emotionSignature(snapshot){
   var localMovies = snapshot.val().Movies;
-var corsRequest = new XMLHttpRequest();
 queryURL = 'https://apiv2.indico.io/emotion';
-
+  var corsRequest = new XMLHttpRequest();
   var requestURL = 'https://themoviedb.org/';
    
   function domainRequest() {
     if(corsRequest) {    
-      corsRequest.open('GET', url, true);
+      corsRequest.open('GET', requestURL, true);
       corsRequest.onreadystatechange = handler;
       corsRequest.send(); 
     }
@@ -74,7 +73,7 @@ queryURL = 'https://apiv2.indico.io/emotion';
     console.log(res)
     database.ref(localMovies[property]).set({
       'emotion': res,
-    });
+    })
     });
   }
 });
