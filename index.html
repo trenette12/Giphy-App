@@ -46,7 +46,7 @@ database.ref().on('value', function emotionSignature(snapshot){
   var localMovies = snapshot.val().Movies;
 queryURL = 'https://apiv2.indico.io/emotion';
   var corsRequest = new XMLHttpRequest();
-  var requestURL = 'https://themoviedb.org/';
+  var requestURL = 'https://www.themoviedb.org';
    
   function domainRequest() {
     if(corsRequest) {    
