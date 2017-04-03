@@ -26,18 +26,18 @@ $("button").on("click", function() {
   var emotionScore;
   queryURL = 'https://apiv2.indico.io/emotion';
 
-	var mood = $("#input-style").val().trim();
-	console.log(mood);
+  var mood = $("#input-style").val().trim();
+  console.log(mood);
 
   $.post(
-  	'https://apiv2.indico.io/emotion',
-  	JSON.stringify({
-  		'api_key': "61cb69fcfa24357a37c920ee85cc3374",
-  		'data': mood,
+    'https://apiv2.indico.io/emotion',
+    JSON.stringify({
+      'api_key': "61cb69fcfa24357a37c920ee85cc3374",
+      'data': mood,
 
-  	})
+    })
   ).then(function(res) {
-  	console.log(res)
+    console.log(res)
   });
 
 }); 
@@ -47,7 +47,7 @@ database.ref().on('value', function emotionSignature(snapshot){
 var corsRequest = new XMLHttpRequest();
 queryURL = 'https://apiv2.indico.io/emotion';
 
-  var requestURL = 'https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=9e47aea3d7ab855ced2fcc031863b928';
+  var requestURL = 'https://themoviedb.org/';
    
   function domainRequest() {
     if(corsRequest) {    
