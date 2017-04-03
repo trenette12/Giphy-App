@@ -5,6 +5,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <title></title>
 </head>
+
 <script type="text/javascript">
 var config = {
   apiKey: "AIzaSyB3cKe_KGVOsgTIkr6lSiszMiczU0PNYSM",
@@ -16,24 +17,39 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var queryURL;
+  
 $("button").on("click", function() {
   event.preventDefault();
   var emotionScore;
   queryURL = 'https://apiv2.indico.io/emotion';
-	var mood = $("#input-style").val().trim();
-	console.log(mood);
+  var mood = $("#input-style").val().trim();
+  console.log(mood);
   $.post(
-  	'https://apiv2.indico.io/emotion',
-  	JSON.stringify({
-  		'api_key': "61cb69fcfa24357a37c920ee85cc3374",
-  		'data': mood,
-  	})
+    'https://apiv2.indico.io/emotion',
+    JSON.stringify({
+      'api_key': "61cb69fcfa24357a37c920ee85cc3374",
+      'data': mood,
+    })
   ).then(function(res) {
-  	console.log(res)
+    console.log(res)
   });
 }); 
 database.ref().on('value', function emotionSignature(snapshot){
   var localMovies = snapshot.val().Movies;
+queryURL = 'https://apiv2.indico.io/emotion';
+  var corsRequest = new XMLHttpRequest();
+  var requestURL = 'https://www.themoviedb.org';
+   
+  function domainRequest() {
+    if(corsRequest) {    
+      corsRequest.open('GET', requestURL, true);
+      corsRequest.onreadystatechange = handler;
+      corsRequest.send(); 
+    }
+  }
+  // var corsURL = "https://movme-92cb7.firebaseio.com/cors";
+  // var corsRequest = createCORSRequest('GET', corsURL);
+  // corsRequest.send();
   for(var property in localMovies) {
   console.log(localMovies[property].Description);
    $.post(
@@ -45,7 +61,7 @@ database.ref().on('value', function emotionSignature(snapshot){
     ).then(function(res) {
     console.log(res)
     database.ref(localMovies[property]).set({
-      emotion: res,
+      'emotion': res,
     })
     });
   }
