@@ -71,7 +71,7 @@ queryURL = 'https://apiv2.indico.io/emotion';
     })
     ).then(function(resp) {
     console.log(resp)
-    database.ref(localMovies[property]).set({
+    database.ref(localMovies[property]).push({
       'emotion': resp,
     })
     });
