@@ -45,6 +45,8 @@ $("button").on("click", function() {
 database.ref().on('value', function emotionSignature(snapshot){
   var localMovies = snapshot.val().Movies;
 var corsRequest = new XMLHttpRequest();
+queryURL = 'https://apiv2.indico.io/emotion';
+
   var requestURL = 'https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=9e47aea3d7ab855ced2fcc031863b928';
    
   function domainRequest() {
