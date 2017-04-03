@@ -32,7 +32,7 @@ $("button").on("click", function() {
   $.post(
     'https://apiv2.indico.io/emotion',
     JSON.stringify({
-      'api_key': "61cb69fcfa24357a37c920ee85cc3374",
+      'api_key': "fc7ac440dd84c6520af1f0e889df8863",
       'data': mood,
 
     })
@@ -71,8 +71,8 @@ queryURL = 'https://apiv2.indico.io/emotion';
     })
     ).then(function(res) {
     console.log(res)
-    firebase.database().ref(localMovies[property]).set({
-      'emotion': res,
+    database.ref(localMovies[property]).set({
+      emotion: res,
     })
     });
   }
