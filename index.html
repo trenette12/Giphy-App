@@ -20,7 +20,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var queryURL;
   var corsRequest = new XMLHttpRequest();
-  var requestURL = 'https://www.themoviedb.org';
+  var requestURL = 'https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=9e47aea3d7ab855ced2fcc031863b928';
    
   function domainRequest() {
     if(corsRequest) {    
