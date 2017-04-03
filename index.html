@@ -19,17 +19,7 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var queryURL;
-  var corsRequest = new XMLHttpRequest();
-  var requestURL = 'https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=9e47aea3d7ab855ced2fcc031863b928';
-   
-  function domainRequest() {
-    if(corsRequest) {    
-      corsRequest.open('GET', url, true);
-      corsRequest.onreadystatechange = handler;
-      corsRequest.send(); 
-    }
-  }
-
+  
 $("button").on("click", function() {
   event.preventDefault();
 
@@ -54,6 +44,16 @@ $("button").on("click", function() {
 
 database.ref().on('value', function emotionSignature(snapshot){
   var localMovies = snapshot.val().Movies;
+var corsRequest = new XMLHttpRequest();
+  var requestURL = 'https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=9e47aea3d7ab855ced2fcc031863b928';
+   
+  function domainRequest() {
+    if(corsRequest) {    
+      corsRequest.open('GET', url, true);
+      corsRequest.onreadystatechange = handler;
+      corsRequest.send(); 
+    }
+  }
 
   // var corsURL = "https://movme-92cb7.firebaseio.com/cors";
   // var corsRequest = createCORSRequest('GET', corsURL);
