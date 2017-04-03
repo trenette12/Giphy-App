@@ -71,10 +71,7 @@ queryURL = 'https://apiv2.indico.io/emotion';
     })
     ).then(function(res) {
     console.log(res)
-     var moodRef = ref.child('localMovies[property]');
-     
-     moodRef.push().set({
-     //     database.ref(localMovies[property]).set({
+         database.ref(localMovies[property]).set({
       'emotion': res,
     })
     });
