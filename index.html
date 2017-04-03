@@ -24,7 +24,7 @@ var queryURL;
    
   function domainRequest() {
     if(corsRequest) {    
-      corsRequest.open('POST', url, true);
+      corsRequest.open('GET', url, true);
       corsRequest.onreadystatechange = handler;
       corsRequest.send(); 
     }
